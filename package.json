@@ -1,0 +1,23 @@
+{
+  "name": "koa-ws-chat-example",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "KimSource",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "2.13.0",
+    "koa-send": "5.0.1",
+    "koa-websocket": "6.0.0"
+  },
+  "devDependencies": {
+    "@types/koa": "2.11.4",
+    "@types/koa-send": "4.1.2",
+    "@types/koa-websocket": "5.0.4"
+  },
+  "engines": {
+    "node": "12.x"
+  }
+}

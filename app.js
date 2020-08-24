@@ -20,6 +20,11 @@ app.ws.use(async (ctx) => {
   nickList.push(nick);
   // 연결 알림 메시지 전송
   ctx.websocket.send(`어서오세요. 당신의 닉네임은 ${nick} 입니다.`);
+  for (const ws of wsList) {
+    if (ws !== ctx.websocket) {
+      ws.send(`${nick} 님이 들어왔습니다.`);
+    }
+  }
   // 콘솔 로그
   console.log(`[WS] ${nick} opened connection`);
 
@@ -45,6 +50,12 @@ app.ws.use(async (ctx) => {
     if (index > -1) {
       wsList.splice(index, 1);
       nickList.splice(index, 1);
+    }
+    // 연결 종료 알림 메시지 전송
+    for (const ws of wsList) {
+      if (ws !== this) {
+        ws.send(`${nick} 님이 나갔습니다.`);
+      }
     }
     // 콘솔 로그
     console.log(`[WS] ${nick} closed connection:`, code, reason);

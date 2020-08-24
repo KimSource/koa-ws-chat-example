@@ -75,7 +75,7 @@
       }
 
       // 웹소켓
-      const ws = new WebSocket(`ws://${location.host}/`);
+      const ws = new WebSocket(`${location.protocol === 'https:' ? 'wss' : 'ws'}://${location.host}/`);
       // 웹소켓 연결 상태 체크용
       let wsOpen = false;
 
